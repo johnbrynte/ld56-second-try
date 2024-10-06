@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://claqa0hvfj225"]
+
+[ext_resource type="PackedScene" uid="uid://bx2yxwdjliw80" path="res://scenes/Ball.tscn" id="1_c8b6q"]
+[ext_resource type="Script" path="res://scripts/Worm.gd" id="1_fj5m2"]
+
+[node name="Worm" type="Node2D"]
+script = ExtResource("1_fj5m2")
+
+[node name="Head" parent="." instance=ExtResource("1_c8b6q")]
+
+[node name="Camera2D" type="Camera2D" parent="Head"]

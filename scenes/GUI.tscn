@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3hnxvl43tqyk"]
+
+[ext_resource type="Script" path="res://scripts/GUI.gd" id="1_gq88m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf4rr"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7gvf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fevi"]
+bg_color = Color(0.87, 0.261, 0.261, 1)
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_gq88m")
+
+[node name="ProgressMarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="ProgressMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pf4rr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProgressMarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ProgressMarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Munch bar"
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressMarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_q7gvf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0fevi")
+show_percentage = false

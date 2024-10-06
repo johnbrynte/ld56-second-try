@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://iqvput21q0wf"]
+
+[ext_resource type="Script" path="res://scripts/Hole.gd" id="1_i8rel"]
+[ext_resource type="Texture2D" uid="uid://dc7nsy0cgp34n" path="res://hole.png" id="1_q3tpi"]
+
+[node name="Hole" type="Node2D"]
+script = ExtResource("1_i8rel")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_q3tpi")

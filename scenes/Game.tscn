@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c33dl7u65ocdj"]
+
+[ext_resource type="PackedScene" uid="uid://b1ugbywalyoq6" path="res://scenes/Apple.tscn" id="1_0ngk1"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_aaniu"]
+[ext_resource type="PackedScene" uid="uid://claqa0hvfj225" path="res://scenes/Worm.tscn" id="2_i3atl"]
+[ext_resource type="PackedScene" uid="uid://b3hnxvl43tqyk" path="res://scenes/GUI.tscn" id="3_l8k18"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_aaniu")
+
+[node name="Apple" parent="." instance=ExtResource("1_0ngk1")]
+position = Vector2(704, 320)
+
+[node name="Apple2" parent="." instance=ExtResource("1_0ngk1")]
+position = Vector2(1344, 448)
+
+[node name="Apple3" parent="." instance=ExtResource("1_0ngk1")]
+position = Vector2(1536, 1024)
+
+[node name="Worm" parent="." instance=ExtResource("2_i3atl")]
+position = Vector2(544, -32)
+
+[node name="GUI" parent="." instance=ExtResource("3_l8k18")]
