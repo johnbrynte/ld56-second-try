@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://doxdhagl1igyu" path="res://hole_inside.png" id="1_dpqse"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tpkqq"]
-radius = 24.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gvjq"]
+radius = 20.0
 
 [node name="FleshHole" type="Node2D"]
 
@@ -11,7 +11,7 @@ radius = 24.0
 texture = ExtResource("1_dpqse")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_tpkqq")
+shape = SubResource("CircleShape2D_7gvjq")

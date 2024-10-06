@@ -62,20 +62,27 @@ func _on_area_2d_area_exited(area:Area2D) -> void:
 func _on_area_2d_area_entered(area:Area2D) -> void:
 	if area.is_in_group("worm"):
 		var ball = area as Ball
-		ball.set_apple(self)
-		countInside += 1
+		set_ball_apple(ball)
 
-		if ball.is_head():
-			_place_hole(ball.worm, true)
 
-			for body in ball.worm.bodyParts:
-				body.z_index = 0
-			
-			$Outside/AnimationPlayer.play("fade_out")
-			$Holes/AnimationPlayer.play("fade_out")
+func set_ball_apple(ball: Ball) -> void:
+	if ball.apple == self:
+		return
 
-		if not isInside and countInside > 0:
-			isInside = true
+	ball.set_apple(self)
+	countInside += 1
+
+	if ball.is_head():
+		_place_hole(ball.worm, true)
+
+		for body in ball.worm.bodyParts:
+			body.z_index = 0
+		
+		$Outside/AnimationPlayer.play("fade_out")
+		$Holes/AnimationPlayer.play("fade_out")
+
+	if not isInside and countInside > 0:
+		isInside = true
 
 
 func eat_flesh(ball: Ball) -> void:

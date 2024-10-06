@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1ugbywalyoq6"]
+[gd_scene load_steps=14 format=3 uid="uid://ffa1mauh278g"]
 
-[ext_resource type="Texture2D" uid="uid://bstxv1xgrhqno" path="res://apple_inside.png" id="1_7pprt"]
-[ext_resource type="Script" path="res://scripts/Apple.gd" id="1_q4mhc"]
-[ext_resource type="Texture2D" uid="uid://dshdxatyuyiul" path="res://apple.png" id="2_xm7ka"]
+[ext_resource type="Script" path="res://scripts/Apple.gd" id="1_2s2q0"]
+[ext_resource type="Texture2D" uid="uid://mlkccf26odwc" path="res://apple_inside_small.png" id="2_5iqm4"]
+[ext_resource type="Texture2D" uid="uid://clvkbi2gvj0qh" path="res://apple_small.png" id="4_pr3bq"]
 
 [sub_resource type="Animation" id="Animation_jvorf"]
 length = 0.001
@@ -112,29 +112,31 @@ _data = {
 "fade_out": SubResource("Animation_6q6ac")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62ggd"]
-size = Vector2(512, 256)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6caqb"]
+size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u78l"]
-size = Vector2(384, 384)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m1k5"]
+size = Vector2(384, 128)
 
-[node name="Apple" type="Node2D"]
-script = ExtResource("1_q4mhc")
+[node name="AppleSmall" type="Node2D"]
+script = ExtResource("1_2s2q0")
 
 [node name="AppleInside" type="Node2D" parent="."]
 
-[node name="Apple" type="Sprite2D" parent="AppleInside"]
-position = Vector2(0, -39.5)
-texture = ExtResource("1_7pprt")
+[node name="AppleSmall" type="Sprite2D" parent="AppleInside"]
+position = Vector2(0, -21)
+scale = Vector2(1.04, 1.04)
+texture = ExtResource("2_5iqm4")
 
 [node name="Flesh" type="Node2D" parent="."]
 position = Vector2(0, -1)
 
 [node name="Outside" type="Node2D" parent="."]
 
-[node name="Apple" type="Sprite2D" parent="Outside"]
-position = Vector2(0, -39.5)
-texture = ExtResource("2_xm7ka")
+[node name="AppleSmall" type="Sprite2D" parent="Outside"]
+position = Vector2(0, -21)
+scale = Vector2(1.04, 1.04)
+texture = ExtResource("4_pr3bq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Outside"]
 libraries = {
@@ -150,11 +152,11 @@ libraries = {
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="Apple1" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_62ggd")
+[node name="AppleSmall1" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6caqb")
 
-[node name="Apple2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3u78l")
+[node name="AppleSmall2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1m1k5")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

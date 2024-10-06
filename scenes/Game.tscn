@@ -1,23 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://c33dl7u65ocdj"]
+[gd_scene load_steps=12 format=3 uid="uid://c33dl7u65ocdj"]
 
 [ext_resource type="PackedScene" uid="uid://b1ugbywalyoq6" path="res://scenes/Apple.tscn" id="1_0ngk1"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_aaniu"]
+[ext_resource type="Texture2D" uid="uid://b0dkau6e8m527" path="res://background.png" id="2_24ecs"]
 [ext_resource type="PackedScene" uid="uid://claqa0hvfj225" path="res://scenes/Worm.tscn" id="2_i3atl"]
+[ext_resource type="PackedScene" uid="uid://ffa1mauh278g" path="res://scenes/AppleSmall.tscn" id="3_3w8hn"]
 [ext_resource type="PackedScene" uid="uid://b3hnxvl43tqyk" path="res://scenes/GUI.tscn" id="3_l8k18"]
+[ext_resource type="Texture2D" uid="uid://clvkbi2gvj0qh" path="res://apple_small.png" id="7_ydv4f"]
+[ext_resource type="Texture2D" uid="uid://ce7awgh37kewn" path="res://heart.png" id="8_3nvp5"]
+[ext_resource type="Texture2D" uid="uid://dc7nsy0cgp34n" path="res://hole.png" id="8_qe5jd"]
+[ext_resource type="Texture2D" uid="uid://dfm70c4xd8efi" path="res://partner.png" id="9_ohaet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2wgb"]
+size = Vector2(320, 64)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_aaniu")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2628, 2176)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1280.0
+texture = ExtResource("2_24ecs")
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1312, 1088)
+texture = ExtResource("2_24ecs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="Apple" parent="." instance=ExtResource("1_0ngk1")]
-position = Vector2(704, 320)
+position = Vector2(2368, 768)
 
 [node name="Apple2" parent="." instance=ExtResource("1_0ngk1")]
-position = Vector2(1344, 448)
+position = Vector2(1600, 448)
 
 [node name="Apple3" parent="." instance=ExtResource("1_0ngk1")]
-position = Vector2(1536, 1024)
+position = Vector2(2880, 320)
+
+[node name="Apple4" parent="." instance=ExtResource("1_0ngk1")]
+position = Vector2(4992, 768)
+
+[node name="AppleSmall" parent="." instance=ExtResource("3_3w8hn")]
+position = Vector2(640, 256)
+
+[node name="AppleSmall2" parent="." instance=ExtResource("3_3w8hn")]
+position = Vector2(960, 576)
+
+[node name="AppleSmall3" parent="." instance=ExtResource("3_3w8hn")]
+position = Vector2(3072, 832)
+
+[node name="AppleSmall4" parent="." instance=ExtResource("3_3w8hn")]
+position = Vector2(3776, 640)
+
+[node name="AppleSmall5" parent="." instance=ExtResource("3_3w8hn")]
+position = Vector2(4224, 128)
+
+[node name="Goal" type="Node2D" parent="."]
+position = Vector2(6112, 672)
+
+[node name="GoalApple" type="Sprite2D" parent="Goal"]
+position = Vector2(129.5, -32)
+texture = ExtResource("7_ydv4f")
+
+[node name="GoalHole" type="Sprite2D" parent="Goal"]
+position = Vector2(1.5, 0)
+texture = ExtResource("8_qe5jd")
+
+[node name="Partner" type="Sprite2D" parent="Goal"]
+position = Vector2(-126.5, 0)
+texture = ExtResource("9_ohaet")
+
+[node name="Area2D" type="Area2D" parent="Goal/Partner" groups=["partner"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Partner/Area2D"]
+shape = SubResource("RectangleShape2D_u2wgb")
+
+[node name="Heart" type="Sprite2D" parent="Goal/Partner/Area2D"]
+visible = false
+position = Vector2(-161.5, -78)
+texture = ExtResource("8_3nvp5")
 
 [node name="Worm" parent="." instance=ExtResource("2_i3atl")]
-position = Vector2(544, -32)
+position = Vector2(544, 32)
 
 [node name="GUI" parent="." instance=ExtResource("3_l8k18")]
